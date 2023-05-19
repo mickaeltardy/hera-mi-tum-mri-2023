@@ -2,6 +2,7 @@
 \usepackage{geometry}
 \usepackage{booktabs}
 \begin{document}
+\section*{\LARGE Week 1}
 \begin{table}[htbp]
     \caption{State-of-the-Art Research Papers Comparison Table}
     \label{tab:comparison}
@@ -52,7 +53,7 @@ The study demonstrated that transformer-based networks, specifically TraBS, impr
 Unsupervised Domain Adaptation for Breast MRI
 Segmentation in Small Datasets}
 
-his paper proposes a Multi-level Semantic-guided Contrastive Domain Adaptation (MSCDA) framework for breast tissue segmentation in magnetic resonance imaging (MRI). The domain shift problem, caused by differences in vendors, acquisition protocols, and biological heterogeneity, hinders the clinical implementation of deep learning models for breast segmentation. The authors utilize unsupervised domain adaptation (UDA) techniques and extend the contrastive loss function to align the feature representations between domains.
+This paper proposes a Multi-level Semantic-guided Contrastive Domain Adaptation (MSCDA) framework for breast tissue segmentation in magnetic resonance imaging (MRI). The domain shift problem, caused by differences in vendors, acquisition protocols, and biological heterogeneity, hinders the clinical implementation of deep learning models for breast segmentation. The authors utilize unsupervised domain adaptation (UDA) techniques and extend the contrastive loss function to align the feature representations between domains.
 
 The proposed MSCDA framework incorporates pixel-to-pixel, pixel-to-centroid, and centroid-to-centroid contrasts to integrate semantic information of the breast images at different levels. A category-wise cross-domain sampling strategy is used to sample anchors from the target images and build a hybrid memory bank to store samples from the source images. Two breast MRI datasets are used, one with non-contrast MRI images from healthy volunteers and the other with contrast-enhanced MRI images from breast cancer patients.
 
@@ -60,6 +61,62 @@ Experiments are conducted for two scenarios: segmenting from source T2-weighted 
 
 Implementation Details
 The proposed MSCDA framework utilizes the DeepLab-v3+ architecture with ResNet-50 as the backbone for the encoder and decoder. The framework also includes a projection/prediction head and a memory bank for storing feature embeddings. The training process involves pre-training the DeepLab-v3+ on the source domain and using the weights to initialize the encoder and decoder of the UDA framework. The Adam optimizer is used for training.
+\section{Paper 4:The Medical Segmentation Decathlon }
+nnU-Net
+was ranked first on both the development and mystery phases.
+Under the proposed definition of a “generalizable learner”, the
+winning method was found to be the most generalizable approach
+across all MSD tasks given the comparison methodology, with a
+significant performance margin. The K.A.V.athlon and
+NVDLMED teams were ranked second and third during the
+development phase, respectively; their ranks were swapped (third
+and second, respectively) during the mystery phase
 
+some algorithmic commonalities
+between top methods, such the use of ensembles, intensity and
+spatial normalization augmentation, the use of Dice loss, the use
+of Adam as an optimizer, and some degree of post-processing
+(e.g., region removal).
+
+the most commonly applied architecture across
+participants was the U-Net, used by 64% of teams. Some evidence
+was found that architectural adjustments to the baseline U-Net
+approach are less important than other relevant algorithmic
+design decisions, such as data augmentation and data set split/
+cross-validation methodology, as demonstrated by the winning
+methodology
+\section{Things done in this week }
+\begin{itemize}
+    \item Thesis Template added to Github
+    \item ProgressJournal created to write the summaries, ideas, etc.
+    \item 3 papers about breast MRI read and summaries made
+    \item Codes of these 3 papers tried:
+    \begin{itemize}
+      \item All of the environments created
+      \item Required libraries installed, library conflicts or deprecated errors solved
+      \item Commands in their readme file tested
+      \item Paper 1 code created the dummy data successfully but failed in the last command
+      \item Paper 2 doesn't have the dataset (publicly available, I need to install and try with data)
+      \item Paper 3 doesn't have the data (private)
+    \end{itemize}
+    \item Paper comparison table added
+  \end{itemize}
+\section{Next Week Ideas }
+
+\begin{itemize}
+    \item Read \textit{nn-Unet} (and other Top 2 papers from Medical Segmentation Decathlon) and NAS Papers
+    \item Try to run the codes of NAS and \textit{nn-Unet}
+    \item Download the datasets and try to adapt them to the codes
+  \end{itemize}
+
+
+  \section{Next Week ToDo }
+
+\begin{itemize}
+    \item Get used to the MONAI
+    \item Try to run different architectures on MONAI
+    \item Adapt the dataloader code to the choosen datasets
+    \item Read \textit{nn-Unet} (and other Top 2 papers from Medical Segmentation Decathlon) and NAS Papers
+  \end{itemize}
 
 \end{document}

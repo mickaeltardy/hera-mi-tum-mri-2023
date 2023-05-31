@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\begin{document}
+\section*{\LARGE Week 1}
+\begin{table}[htbp]
+    \caption{State-of-the-Art Research Papers Comparison Table}
+    \label{tab:comparison}
+    \begin{tabular}{p{4cm} p{0.75cm} p{4cm} p{2cm} p{1.5cm} p{1.5cm} p{1.5cm}}
+        \toprule
+        \textbf{Paper} & \textbf{Data Type} & \textbf{Dataset} & \textbf{Method} & \textbf{Published Date} & \textbf{Accuracy} & \textbf{Code} \\
+        \midrule
+        Multi Scale Curriculum CNN for Context-Aware Breast MRI Malignancy Classification & MRI & (DCE) MR images of 408 patients from clinical routine at their institution & 3D CNN & 2019 & 0.81 & Exists \\
+        Fibroglandular Tissue Segmentation in Breast MRI using Vision Transformers - A Multi-institutional Evaluation & MRI & 200 internal and 40 external MRI + UKA + DUKE & Transformer & 2023 & 0.92±0.07 0.86±0.08 & Exists \\
+        MSCDA: Multi-level Semantic-guided Contrast
+Improves Unsupervised Domain Adaptation for Breast
+MRI Segmentation in Small Datasets & MRI & non-contrast MRI examinations from 11 healthy volunteers and contrast-enhanced MRI examinations of 134 invasive breast cancer patients & Unsupervised domain adaptation (UDA) methods and Contrastive learning & 2023 & DSC 0.89 & Exists - Works (Dataset is not reachable) \\
+        ... \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+\section{Paper 1: Multi Scale Curriculum CNN for Context-Aware Breast MRI Malignancy Classification}
+Proposes a novel approach for classifying breast malignancy based on MRI images of the whole breast, considering the global context rather than individual lesions. The authors address the limitations of object detection approaches that focus on segmenting and classifying individual lesions, which disregard abstract features and global medically relevant information
+The proposed method utilizes a 3D Convolutional Neural Network (CNN) and a multi-scale curriculum learning strategy. Unlike current object detection approaches, this approach does not rely on lesion segmentations, making the annotation of training data more effective. The authors compare the performance of their approach, referred to as ResNet18 Curriculum, with other methods including Mask R-CNN, Retina U-Net, and a radiologist
+
+Multi-scale curriculum refers to a training strategy in machine learning and deep learning models where the learning process is organized into multiple stages, each focusing on different levels of detail or scales of the data. The curriculum learning approach is inspired by the idea that training a model on easy examples first and gradually increasing the difficulty of the examples can improve the learning process and overall performance.
+
+In the context of the paper "Multi Scale Curriculum CNN for Context-Aware Breast MRI Malignancy Classification," the authors propose a multi-scale curriculum learning strategy for breast MRI malignancy classification. The goal is to classify the malignancy of breast cancer globally based on MRI images of the entire breast, rather than individual lesions. The authors argue that considering the global context of the whole breast is important for accurate diagnosis and cannot be captured by traditional object detection approaches.
+
+The multi-scale curriculum learning strategy in this paper involves two stages of training:
+
+Stage 1: Classification of 3D lesion patches: In this stage, the model is trained to classify 3D patches containing at least one lesion. The patches are relatively small (size 64x64x4) and focus on local details.
+
+Stage 2: Classification of 3D volumes: In this stage, the model is trained to classify entire 3D volumes of the breast, including all global context. The volumes are larger (size 256x256x32) and provide a more holistic view of the breast.
+
+By training the model in a multi-scale curriculum fashion, starting with local patches and then progressing to whole volumes, the authors aim to leverage both local and global information for accurate malignancy classification. This approach allows the model to learn from different scales of data and capture relevant features at different levels of detail.
+This approach aims to capture both local and global context, improving the performance of the model.
+
+The results demonstrate that the proposed ResNet18 Curriculum approach achieves an AUROC of 0.89, comparable to the performance of Mask R-CNN and Retina U-Net, which rely on pixelwise segmentations. In contrast, a naive ResNet18 model without curriculum learning performs poorly. The radiologist's performance outperforms all the evaluated models.
+\section{Paper 2: Fibroglandular Tissue Segmentation in Breast MRI using Vision Transformers - A Multi-institutional Evaluation}
+Fibroglandular tissue refers to a combination of fibrous and glandular tissue found in the breast. It is a normal part of breast composition and is composed of fibrous connective tissue, which provides structural support, and glandular tissue, which produces milk. The proportion of fibroglandular tissue in the breast varies among individuals and changes over time, particularly in response to hormonal fluctuations. Fibroglandular tissue appears as dense areas on mammograms and breast MRI scans. Assessing the amount and distribution of fibroglandular tissue is important in breast imaging as it can affect breast density measurements and can be associated with an increased risk of breast cancer.
+The paper  presents a study on the accurate and automatic segmentation of fibroglandular tissue in breast MRI screening. The segmentation of fibroglandular tissue is important for quantifying breast density and background parenchymal enhancement.
+The researchers developed and evaluated a transformer-based neural network called TraBS (SwinTransformer for fibroglandular Breast tissue Segmentation) and compared its performance with a well-established convolutional neural network called nnUNet. They trained and tested both models on 200 internal and 40 external breast MRI examinations using manually generated segmentations by experienced human readers.
+
+The evaluation of segmentation performance was done using the Dice score and the average symmetric surface distance. The results showed that TraBS outperformed nnUNet in terms of the Dice score on both the internal and external test sets. The average symmetric surface distance was also lower (indicating better performance) for TraBS compared to nnUNet on both test sets.
+
+The study demonstrated that transformer-based networks, specifically TraBS, improved the quality of fibroglandular tissue segmentation in breast MRI compared to convolutional-based models like nnUNet. These findings have the potential to enhance the accuracy of breast density and parenchymal enhancement quantification in breast MRI screening.
+
+\section{Paper 3: MSCDA: Multi-level Semantic-guided Contrast Improves
+Unsupervised Domain Adaptation for Breast MRI
+Segmentation in Small Datasets}
+
+This paper proposes a Multi-level Semantic-guided Contrastive Domain Adaptation (MSCDA) framework for breast tissue segmentation in magnetic resonance imaging (MRI). The domain shift problem, caused by differences in vendors, acquisition protocols, and biological heterogeneity, hinders the clinical implementation of deep learning models for breast segmentation. The authors utilize unsupervised domain adaptation (UDA) techniques and extend the contrastive loss function to align the feature representations between domains.
+
+The proposed MSCDA framework incorporates pixel-to-pixel, pixel-to-centroid, and centroid-to-centroid contrasts to integrate semantic information of the breast images at different levels. A category-wise cross-domain sampling strategy is used to sample anchors from the target images and build a hybrid memory bank to store samples from the source images. Two breast MRI datasets are used, one with non-contrast MRI images from healthy volunteers and the other with contrast-enhanced MRI images from breast cancer patients.
+
+Experiments are conducted for two scenarios: segmenting from source T2-weighted (T2W) images to target dynamic contrast-enhanced (DCE)-T1-weighted (T1W) images (T2W-to-T1W) and from source T1W images to target T2W images (T1W-to-T2W). The proposed method achieves high Dice similarity coefficient (DSC) values of 89.2% and 84.0% for T2W-to-T1W and T1W-to-T2W, respectively, outperforming state-of-the-art methods. Importantly, the framework demonstrates good performance even with a smaller source dataset, indicating its label-efficient nature.
+
+Implementation Details
+The proposed MSCDA framework utilizes the DeepLab-v3+ architecture with ResNet-50 as the backbone for the encoder and decoder. The framework also includes a projection/prediction head and a memory bank for storing feature embeddings. The training process involves pre-training the DeepLab-v3+ on the source domain and using the weights to initialize the encoder and decoder of the UDA framework. The Adam optimizer is used for training.
+\section{Paper 4:The Medical Segmentation Decathlon }
+nnU-Net
+was ranked first on both the development and mystery phases.
+Under the proposed definition of a “generalizable learner”, the
+winning method was found to be the most generalizable approach
+across all MSD tasks given the comparison methodology, with a
+significant performance margin. The K.A.V.athlon and
+NVDLMED teams were ranked second and third during the
+development phase, respectively; their ranks were swapped (third
+and second, respectively) during the mystery phase
+
+some algorithmic commonalities
+between top methods, such the use of ensembles, intensity and
+spatial normalization augmentation, the use of Dice loss, the use
+of Adam as an optimizer, and some degree of post-processing
+(e.g., region removal).
+
+the most commonly applied architecture across
+participants was the U-Net, used by 64% of teams. Some evidence
+was found that architectural adjustments to the baseline U-Net
+approach are less important than other relevant algorithmic
+design decisions, such as data augmentation and data set split/
+cross-validation methodology, as demonstrated by the winning
+methodology
+\section{Things done in this week }
+\begin{itemize}
+    \item Thesis Template added to Github
+    \item ProgressJournal created to write the summaries, ideas, etc.
+    \item 3 papers about breast MRI read and summaries made
+    \item Codes of these 3 papers tried:
+    \begin{itemize}
+      \item All of the environments created
+      \item Required libraries installed, library conflicts or deprecated errors solved
+      \item Commands in their readme file tested
+      \item Paper 1 code created the dummy data successfully but failed in the last command
+      \item Paper 2 doesn't have the dataset (publicly available, I need to install and try with data)
+      \item Paper 3 doesn't have the data (private)
+    \end{itemize}
+    \item Paper comparison table added
+  \end{itemize}
+\section{Next Week Ideas }
+
+\begin{itemize}
+    \item Read \textit{nn-Unet} (and other Top 2 papers from Medical Segmentation Decathlon) and NAS Papers
+    \item Try to run the codes of NAS and \textit{nn-Unet}
+    \item Download the datasets and try to adapt them to the codes
+  \end{itemize}
+
+
+  \section{Next Week ToDo }
+
+\begin{itemize}
+    \item Get used to the MONAI
+    \item Try to run different architectures on MONAI
+    \item Adapt the dataloader code to the choosen datasets
+    \item Read \textit{nn-Unet} (and other Top 2 papers from Medical Segmentation Decathlon) and NAS Papers
+\end{itemize}
+\documentclass{article}
+\usepackage{multirow}
+
+\begin{document}
+
+\begin{table}[htbp]
+\centering
+\caption{Dataset Information}
+\label{tab:dataset}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Criteria}} & \multicolumn{3}{c|}{\textbf{Datasets}} \\ \cline{2-4} 
+ & \textbf{Dataset 1} & \textbf{Dataset 2} & \textbf{Dataset 3} \\ \hline
+\textbf{Modalities} & MR, SEG & MR, CT & PET, CT \\ \hline
+\textbf{Participants} & 500 & 750 & 300 \\ \hline
+\textbf{Studies} & 250 & 400 & 150 \\ \hline
+\textbf{Series} & 1,500 & 2,000 & 800 \\ \hline
+\textbf{Images} & 100,000 & 150,000 & 60,000 \\ \hline
+\textbf{Image Size (GB)} & 50.0 & 75.0 & 30.0 \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}
+
+
+\end{document}

@@ -1,6 +1,8 @@
 \documentclass{article}
 \usepackage{geometry}
 \usepackage{booktabs}
+\usepackage{multirow}
+
 \begin{document}
 \section*{\LARGE Week 1}
 \begin{table}[htbp]
@@ -117,6 +119,30 @@ methodology
     \item Try to run different architectures on MONAI
     \item Adapt the dataloader code to the choosen datasets
     \item Read \textit{nn-Unet} (and other Top 2 papers from Medical Segmentation Decathlon) and NAS Papers
-  \end{itemize}
+\end{itemize}
+\documentclass{article}
+\usepackage{multirow}
+
+\begin{document}
+
+\begin{table}[htbp]
+\centering
+\caption{Dataset Information}
+\label{tab:dataset}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Criteria}} & \multicolumn{3}{c|}{\textbf{Datasets}} \\ \cline{2-4} 
+ & \textbf{Dataset 1} & \textbf{Dataset 2} & \textbf{Dataset 3} \\ \hline
+\textbf{Modalities} & MR, SEG & MR, CT & PET, CT \\ \hline
+\textbf{Participants} & 500 & 750 & 300 \\ \hline
+\textbf{Studies} & 250 & 400 & 150 \\ \hline
+\textbf{Series} & 1,500 & 2,000 & 800 \\ \hline
+\textbf{Images} & 100,000 & 150,000 & 60,000 \\ \hline
+\textbf{Image Size (GB)} & 50.0 & 75.0 & 30.0 \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}
+
 
 \end{document}
